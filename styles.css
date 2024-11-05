@@ -196,3 +196,7 @@ main {
     font-weight: 700;
     margin-top: 5px;
 }
+
+.x-switch {
+    color: #f00;
+}
