@@ -409,6 +409,20 @@ livesInput.addEventListener("input", () => {
     localStorage.setItem('lives', lives);
 });
 
+const switchInput = document.getElementById('check')
+switchInput.addEventListener('click', () => {
+    const xSwitch = document.querySelector('.x-switch')
+    const squareSwitch = document.querySelector('.square-switch')
+    if(switchInput.checked) {
+        squareSwitch.style.display = 'inline'
+        xSwitch.style.color = '#ccd'
+    } else {
+        xSwitch.style.color = '#f00'
+        squareSwitch.style.display = 'none'
+    }
+    
+})
+
 
 const dialogButton = document.querySelector('.settings-button')
 const dialog = document.querySelector('.settings')
