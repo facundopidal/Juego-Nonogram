@@ -242,17 +242,6 @@ function setupInteraction(gameSwitch, size, lives, solution) {
         saveGameState(size, liveCount, solution, getButtonsState(), rowsCompleted);
     
         if (rowsCompleted === solution.length && liveCount > 0) {
-            const reset = document.querySelector('.reset');
-            reset.style.opacity = 1;
-            reset.style.cursor = "pointer";
-            reset.disabled = false
-            reset.addEventListener('click', () => {
-                reset.style.opacity = 0;
-                reset.style.cursor = "default";
-                reset.disabled = true
-                localStorage.removeItem('gameState')
-                startGame(size);
-            });
             setTimeout(() => {
                 alert("Completaste el juego!!");
             }, 100);
@@ -425,12 +414,4 @@ switchInput.addEventListener('click', () => {
         squareSwitch.style.display = 'none'
     }
     
-})
-
-
-const dialogButton = document.querySelector('.settings-button')
-const dialog = document.querySelector('.settings')
-
-dialogButton.addEventListener('click', () => {
-    dialog.showModal()
 })

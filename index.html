@@ -45,6 +45,7 @@
                     <label for="gamemode-check">Activar click izquierdo</label>
                     <input type="checkbox" id="gamemode-check">
                 </span>
+                <button class="new-game">Nuevo juego</button>
                 <form method="dialog" class="close-dialog">
                     <button>✖</button>
                 </form>
@@ -57,23 +58,28 @@
             <span class="lives-span">Vidas: ❤️❤️❤️</span>
             <button class="reset" disabled>Reiniciar</button>
         </div>
-        
-        <table class="nonogram">
-            <thead class="nonogram-thead">
-                
-            </thead>
-            <tbody class="nonogram-tbody">
-                <tr></tr>
-            </tbody>
-        </table>
-        <div class="switch-container">
-            <input type="checkbox" id="check" checked>
-            <label for="check" class="switch">
-                <div>
-                    <span class="x-switch">✖</span>
-                    <span class="square-switch">⬛</span>
+        <div class="main-container">
+            <aside>
+            </aside>
+            <div class="main-content">
+                <table class="nonogram">
+                    <thead class="nonogram-thead">
+                        
+                    </thead>
+                    <tbody class="nonogram-tbody">
+                        <tr></tr>
+                    </tbody>
+                </table>
+                <div class="switch-container">
+                    <input type="checkbox" id="check" checked>
+                    <label for="check" class="switch">
+                        <div>
+                            <span class="x-switch">✖</span>
+                            <span class="square-switch">⬛</span>
+                        </div>
+                    </label>
                 </div>
-            </label>
+            </div>
         </div>
         
     </main>

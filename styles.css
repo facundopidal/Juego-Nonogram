@@ -25,7 +25,7 @@ header {
     transition: scale .3s ease-in-out;
     scale: 0;
     margin: 75px auto;
-    height: 30vh;
+    height: 35vh;
     padding: 10px;
     border: 1px solid #000;
     background-color: #ddd;
@@ -38,7 +38,7 @@ header {
     transition: scale .3s ease-in-out;
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 35vh;
     justify-content: space-evenly;
 }
 
@@ -47,6 +47,17 @@ header {
     display: flex;
     justify-content: space-between;
     gap: 5px;
+}
+
+.new-game {
+    cursor: pointer;
+    padding: 2px;
+    outline: none;
+    border: 1px solid #000;
+}
+
+.new-game:hover {
+    background-color: #aaa;
 }
 
 .close-dialog {
@@ -68,6 +79,15 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-content {
+    flex: 1;
 }
 
 .nonogram {
@@ -224,12 +244,19 @@ header.dark-mode,
     background-color: #333;
 }
 
+.dark-mode .nonogram-tbody td:first-child,
+.dark-mode .nonogram-thead td:not(:first-child) {
+    background-color: #555;
+    color: #cfcccc;
+    box-shadow: 0 0 0 1px #222;
+}
+
+.dark-mode .game-td {
+    background-color: #dfdddd;
+}
+
 .dark-mode .switch-container{
     background-color: #282828;
 }
 
-.dark-mode .nonogram-tbody td:first-child,
-.dark-mode .nonogram-thead td:not(:first-child) {
-    background-color: #555;
-    box-shadow: 0 0 0 1px #222;
-}
+

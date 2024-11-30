@@ -16,6 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+const dialogButton = document.querySelector('.settings-button')
+const dialog = document.querySelector('.settings')
+
+dialogButton.addEventListener('click', () => {
+    dialog.showModal()
+})
+
+const newGameButton = document.querySelector('.new-game');
+newGameButton.addEventListener('click', () => {
+    localStorage.removeItem('gameState')
+    startGame(parseInt(sizeSelect.value));
+});
+
 
 // Seleccionamos el checkbox del modo oscuro
 const darkModeToggle = document.getElementById("darkmode-check");
