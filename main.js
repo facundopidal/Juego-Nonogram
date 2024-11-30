@@ -245,9 +245,11 @@ function setupInteraction(gameSwitch, size, lives, solution) {
             const reset = document.querySelector('.reset');
             reset.style.opacity = 1;
             reset.style.cursor = "pointer";
+            reset.disabled = false
             reset.addEventListener('click', () => {
                 reset.style.opacity = 0;
                 reset.style.cursor = "default";
+                reset.disabled = true
                 localStorage.removeItem('gameState')
                 startGame(size);
             });
@@ -261,9 +263,11 @@ function setupInteraction(gameSwitch, size, lives, solution) {
             const reset = document.querySelector('.reset');
             reset.style.opacity = 1;
             reset.style.cursor = "pointer";
+            reset.disabled = false
             reset.addEventListener('click', () => {
                 reset.style.opacity = 0;
                 reset.style.cursor = "default";
+                reset.disabled = true
                 resetGame(size, solution);
             });
         }

@@ -41,6 +41,10 @@
                     <input type="number" class="input-lives"
                      min="1" max="10" value="3">
                 </span>
+                <span>
+                    <label for="gamemode-check">Activar click izquierdo</label>
+                    <input type="checkbox" id="gamemode-check">
+                </span>
                 <form method="dialog" class="close-dialog">
                     <button>✖</button>
                 </form>
@@ -51,7 +55,7 @@
     <main>
         <div class="lives">
             <span class="lives-span">Vidas: ❤️❤️❤️</span>
-            <button class="reset">Reiniciar</button>
+            <button class="reset" disabled>Reiniciar</button>
         </div>
         
         <table class="nonogram">

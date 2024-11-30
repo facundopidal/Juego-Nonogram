@@ -82,6 +82,7 @@ main {
     width: 21px;
     height: 21px;
     border: 1px solid #ccc;
+    background-color: #fff;
 }
 
 .game-td button {
@@ -199,4 +200,36 @@ main {
 
 .x-switch {
     color: #ccd;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #282828; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
+
+header.dark-mode, 
+.settings.dark-mode {
+    background-color: #282828;
+    color: #e0e0e0;
+}
+
+.dark-mode svg {
+    background-color: #282828;
+    color: #e0e0e0;
+}
+
+.settings.dark-mode {
+    border-color: #444;
+    background-color: #333;
+}
+
+.dark-mode .switch-container{
+    background-color: #282828;
+}
+
+.dark-mode .nonogram-tbody td:first-child,
+.dark-mode .nonogram-thead td:not(:first-child) {
+    background-color: #555;
+    box-shadow: 0 0 0 1px #222;
 }
