@@ -148,11 +148,11 @@ function setupInteraction(gameSwitch, size, lives, solution) {
 
         button.addEventListener("mousedown", function (e) {
             if (liveCount === 0) return
+            if(e.which === 2) return 
             isDragging = true
             draggedCells.push(this)
-            
             if(!isClicked){
-                handleClick(this, gameSwitch)
+                handleClick(this, gameSwitch, e.which)
                 isClicked = true
             }
             
@@ -168,7 +168,7 @@ function setupInteraction(gameSwitch, size, lives, solution) {
                 // Solo permite marcar celdas adyacentes en la misma fila o columna
                 if (isAdjacent(previousCell, currentCell)) {
                     draggedCells.push(this)
-                    handleClick(this, gameSwitch)
+                    handleClick(this, gameSwitch, e.which)
                     previousCell = currentCell
                 }
             }
@@ -186,24 +186,26 @@ function setupInteraction(gameSwitch, size, lives, solution) {
         button.addEventListener("click", function (e) {
             if (liveCount === 0) return
            
+            console.log(e.which)
             if(!isClicked) {
-                handleClick(this, gameSwitch)
+                handleClick(this)
                 isClicked = true
             }
             
         });
     });
-
-    function handleClick(button, gameSwitch) {
-        if (button.id === "clicked") return;
     
+    function handleClick(button, gameSwitch, mouseButton = 1) {
+        if (button.id === "clicked") return;
+        
         const row = button.dataset.row;
         const col = button.dataset.col;
         const cellValue = getCellValue(row, col);
+        const gameModeCheck = document.getElementById('gamemode-check')
     
         button.id = "clicked";
     
-        if (gameSwitch.checked) {
+        if ((!gameModeCheck.checked && gameSwitch.checked) || (gameModeCheck.checked && mouseButton === 1)) {
             if (cellValue === 1) {
                 button.style.transition = "background-color 0.3s ease";
                 button.style.backgroundColor = "#333";
@@ -340,6 +342,7 @@ function resetGame(size, existingSolution) {
     createTable(size, rowHints, colHints);
     const gameSwitch = document.getElementById('check');
     gameSwitch.checked = true;
+    updateGameSwitch()
     setupInteraction(gameSwitch, size, lives, existingSolution);
 }
 
@@ -358,6 +361,7 @@ function startGame(size) {
 
         const gameSwitch = document.getElementById('check');
         gameSwitch.checked = true;
+        updateGameSwitch()
 
         setupInteraction(gameSwitch, size, lives, solution);
 
@@ -373,6 +377,7 @@ function startGame(size) {
         createTable(size, rowHints, colHints);
         const gameSwitch = document.getElementById('check');
         gameSwitch.checked = true;
+        updateGameSwitch()
 
         rowsCompleted = 0
         saveGameState(size, lives, solution, getButtonsState(), rowsCompleted)
@@ -402,8 +407,10 @@ livesInput.addEventListener("input", () => {
     localStorage.setItem('lives', lives);
 });
 
-const switchInput = document.getElementById('check')
-switchInput.addEventListener('click', () => {
+const gameTable = document.querySelector('.nonogram')
+gameTable.oncontextmenu = () => { return false }
+
+function updateGameSwitch(){
     const xSwitch = document.querySelector('.x-switch')
     const squareSwitch = document.querySelector('.square-switch')
     if(switchInput.checked) {
@@ -413,5 +420,16 @@ switchInput.addEventListener('click', () => {
         xSwitch.style.color = '#f00'
         squareSwitch.style.display = 'none'
     }
-    
+}
+
+const switchInput = document.getElementById('check')
+switchInput.addEventListener('click', () => {
+    updateGameSwitch()
+})
+
+const gameModeCheck = document.getElementById('gamemode-check')
+gameModeCheck.addEventListener('change', function(e) {
+    const gameSwitch = document.querySelector('.switch')
+    if(gameModeCheck.checked) gameSwitch.style.display = 'none'
+    else gameSwitch.style.display = 'block'
 })
