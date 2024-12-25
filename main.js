@@ -386,16 +386,6 @@ function startGame(size) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const savedSize = localStorage.getItem('selectedSize');
-    const sizeToStart = savedSize ? parseInt(savedSize) : 5; 
-    sizeSelect.value = sizeToStart; 
-    
-    const savedLives = localStorage.getItem('lives');
-    livesInput.value = savedLives ? savedLives : 3;
-    startGame(sizeToStart); 
-});
-
 sizeSelect.addEventListener("change", () => {
     const selectedSize = parseInt(sizeSelect.value);
     localStorage.setItem('selectedSize', selectedSize);
@@ -430,6 +420,26 @@ switchInput.addEventListener('click', () => {
 const gameModeCheck = document.getElementById('gamemode-check')
 gameModeCheck.addEventListener('change', function(e) {
     const gameSwitch = document.querySelector('.switch')
-    if(gameModeCheck.checked) gameSwitch.style.display = 'none'
-    else gameSwitch.style.display = 'block'
+    if(gameModeCheck.checked) {
+        gameSwitch.style.display = 'none'
+        localStorage.setItem('gameMode', 'clicks')
+    } 
+    else {
+        gameSwitch.style.display = 'block'
+        localStorage.setItem('gameMode', 'switch')
+    } 
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedSize = localStorage.getItem('selectedSize');
+    const sizeToStart = savedSize ? parseInt(savedSize) : 5; 
+    sizeSelect.value = sizeToStart; 
+    
+    const savedLives = localStorage.getItem('lives');
+    livesInput.value = savedLives ? savedLives : 3;
+    startGame(sizeToStart); 
+
+    const savedMode = localStorage.getItem('gameMode')
+    if(savedMode === 'clicks') gameModeCheck.checked = true
+    
+});
