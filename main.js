@@ -4,16 +4,21 @@ function generateSolution(size) {
         const row = Array(size).fill(0);
         solution.push(row);
     }
-
-    for (let i = 0; i < size; i++) {
-        const randomCol = Math.floor(Math.random() * size);
-        solution[i][randomCol] = 1; 
+ 
+    if(size >= 15) {
+        for (let i = 0; i < size; i++) {
+            const randomCol = Math.floor(Math.random() * size);
+            solution[i][randomCol] = 1; 
+        }
     }
 
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             if (solution[i][j] === 0) {
-                solution[i][j] = Math.random() > 0.5 ? 1 : 0;
+                if(i === 0 || i === size-1 || j === 0 || j === size-1)
+                    solution[i][j] = Math.random() > 0.3 ? 1 : 0;
+                else 
+                    solution[i][j] = Math.random() > 0.5 ? 1 : 0;
             }
         }
     }
