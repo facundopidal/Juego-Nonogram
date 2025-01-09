@@ -445,6 +445,11 @@ document.addEventListener("DOMContentLoaded", () => {
     startGame(sizeToStart); 
 
     const savedMode = localStorage.getItem('gameMode')
-    if(savedMode === 'clicks') gameModeCheck.checked = true
+    if(savedMode === 'clicks') {
+        gameModeCheck.checked = true
+        const gameSwitch = document.querySelector('.switch')
+        gameSwitch.style.display = 'none'
+    } 
+
     
 });
