@@ -25,7 +25,7 @@ header {
     transition: scale .3s ease-in-out;
     scale: 0;
     margin: 75px auto;
-    height: 35vh;
+    height: 40vh;
     padding: 10px;
     border: 1px solid #000;
     background-color: #ddd;
@@ -38,7 +38,7 @@ header {
     transition: scale .3s ease-in-out;
     display: flex;
     flex-direction: column;
-    height: 35vh;
+    height: 40vh;
     justify-content: space-evenly;
 }
 
@@ -68,7 +68,7 @@ header {
     border: none;
     border-radius: 30%;
     background-color: #ccc;
-    padding: 3px;
+    padding: 3px 5px;
 }
 
 .close-dialog button:hover {
@@ -222,10 +222,9 @@ main {
     color: #ccd;
 }
 
-/* Modo oscuro */
 body.dark-mode {
-    background-color: #282828; /* Fondo oscuro */
-    color: #e0e0e0; /* Texto claro */
+    background-color: #282828;
+    color: #e0e0e0;
 }
 
 header.dark-mode, 
